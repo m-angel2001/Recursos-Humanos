@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="Container text-center"> 
         <h3>
           Sistema de Recursos Humanos
         </h3>
