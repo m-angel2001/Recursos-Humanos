@@ -57,4 +57,16 @@ public class EmpleadoControlador {
         Empleado actualizado = empleadoServicio.guardarEmpleado(empleado);
         return ResponseEntity.ok(actualizado);
     }
+    // DELETE /api/empleados/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarEmpleado(@PathVariable Long id) {
+        Empleado existente = empleadoServicio.obtenerEmpleadoPorId(id);
+        if (existente==null) {
+            return ResponseEntity.notFound().build();
+        }
+        empleadoServicio.eliminarEmpleado(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    //http://localhost:8080/api/empleado
 }
