@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @Transactional
@@ -24,7 +24,7 @@ public class EmpleadoServicioImpl implements EmpleadoServicio {
     public List<Empleado> listarEmpleados() {
         return empleadoRepositorio.findAll();
     }
-
+// Hasta aqui
     @Override
     @Transactional(readOnly = true)
     public Empleado obtenerEmpleadoPorId(Long id) {

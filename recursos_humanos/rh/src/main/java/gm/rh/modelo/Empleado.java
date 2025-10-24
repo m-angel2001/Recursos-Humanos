@@ -36,11 +36,11 @@ public class Empleado {
 
     // METODOS GET Y SET
 
-    public Long getidEmpleado(Long idEmpleado) {
+    public Long getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setidEmpleado(Long idEmpleado) {
+    public void setIdEmpleado(Long idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 

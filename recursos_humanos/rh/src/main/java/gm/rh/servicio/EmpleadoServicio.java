@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EmpleadoServicio {
     List<Empleado> listarEmpleados();
-    Empleado obtenerEmpleadoPorid(Long id);
+    Empleado obtenerEmpleadoPorId(Long id);
     Empleado guardarEmpleado(Empleado empleado);  // Crea o actualiza
     void eliminarEmpleado(Long id);
 }
