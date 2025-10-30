@@ -1,6 +1,28 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 export default function ListadoEmpleados() {
+
+  const urlBase = "http://localhost:8080/api/empleados";
+
+  const [empleados, setEmpleados] = useState([]);
+
+  useEffect(() => {
+    cargarEmpleados();
+  }, []);
+
+  const cargarEmpleados = async () => {
+    try{
+      const resultado = await axios.get(urlBase);
+      console.log("Resultado de cargar empleados: ");
+      console.log(resultado.data);
+      setEmpleados(resultado.data);
+    }
+    catch(error) {
+      console.error("Error al cargar empleados: ", error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="Container text-center" style={{margin: "30px"}}>
