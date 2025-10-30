@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { NumericFormat } from "react-number-format";
 
 export default function ListadoEmpleados() {
 
@@ -12,20 +13,19 @@ export default function ListadoEmpleados() {
   }, []);
 
   const cargarEmpleados = async () => {
-    try{
+    try {
       const resultado = await axios.get(urlBase);
       console.log("Resultado de cargar empleados: ");
       console.log(resultado.data);
       setEmpleados(resultado.data);
-    }
-    catch(error) {
+    } catch (error) {
       console.error("Error al cargar empleados: ", error);
     }
   };
 
   return (
     <div className="container">
-      <div className="Container text-center" style={{margin: "30px"}}>
+      <div className="Container text-center" style={{ margin: "30px" }}>
         <h3>Sistema de Recursos Humanos</h3>
       </div>
 
@@ -40,24 +40,24 @@ export default function ListadoEmpleados() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>John</td>
-            <td>Doe</td>
-            <td>@social</td>
-          </tr>
+          {
+            //Iterar el arreglo de empleados
+
+            empleados.map((empleado) => (
+              <tr key={empleado.idEmpleado}>
+                <th scope="row">{empleado.idEmpleado}</th>
+                <td>{empleado.nombre}</td>
+                <td>{empleado.departamento}</td>
+                <td>
+                  <NumericFormat value={empleado.sueldo}
+                  displayType={'text'}
+                  thousandSeparator=',' prefix={'$'}
+                  decimalScale={2} fixedDecimalScale/>
+                  </td>
+              </tr>
+            ))
+          }
+          
         </tbody>
       </table>
     </div>

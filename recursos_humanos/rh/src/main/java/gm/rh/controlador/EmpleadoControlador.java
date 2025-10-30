@@ -68,5 +68,5 @@ public class EmpleadoControlador {
         return ResponseEntity.noContent().build();
     }
 
-    //http://localhost:8080/api/empleado
+    //http://localhost:8080/api/empleados
 }
