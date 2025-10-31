@@ -16,7 +16,7 @@ function App() {
     <Navegacion/>
     <Routes>
       <Route path="/" element={<ListadoEmpleados/>}/>
-      <Route path='/agregar' elemnet={<AgregarEmpleado/>}/>
+      <Route path='/agregar' element={<AgregarEmpleado/>}/>
     </Routes>
     </BrowserRouter>
     </>
