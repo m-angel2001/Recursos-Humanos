@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function AgregarEmpleado() {
+export default function EditarEmpleado() {
   const [empleado, setEmpleado] = useState({
     nombre: "",
     departamento: "",
@@ -76,7 +76,7 @@ export default function AgregarEmpleado() {
 
         <div className="text-center">
           <button type="submit" className="btn btn-warning btn-sm me-3">
-            Agregar
+            Guardar
           </button>
           <a href="/" className="btn btn-danger btn-sm">
             Regresar
