@@ -1,14 +1,28 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditarEmpleado() {
+
+const urlBase = "http://localhost:8080/api/empleados";
+
+const {id} = useParams();
+
   const [empleado, setEmpleado] = useState({
     nombre: "",
     departamento: "",
     sueldo: "",
   });
-  const { nombre, departamento, sueldo } = empleado;
+  const { nombre, departamento, sueldo } = empleado
+
+  useEffect(() => {
+    cargarEmpleado();
+  }, []);
+  
+  const cargarEmpleado = async () => {
+    const resultado = await axios.get(`${urlBase}/${id}`) 
+    setEmpleado(resultado.data);
+  }
   const onInputChange = (e) => {
     //Se expanden los atributos
     setEmpleado({ ...empleado, [e.target.name]: e.target.value });
@@ -17,8 +31,8 @@ export default function EditarEmpleado() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const urlBase = "http://localhost:8080/api/empleados";
-    await axios.post(urlBase, empleado);
+    
+    await axios.put(`${urlBase}/${id}`, empleado);
 
     //Redirigir a la pagina de inicio
     navegacion("/");
@@ -26,7 +40,7 @@ export default function EditarEmpleado() {
   return (
     <div className="container">
       <div className="container text-center" style={{ margin: "30px" }}>
-        <h3>Agregar Empleado</h3>
+        <h3>Editar Empleado</h3>
       </div>
       <form onSubmit={(e) => onSubmit(e)}>
         <div className="mb-3">
